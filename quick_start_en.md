@@ -1,14 +1,14 @@
 # Quick Start for Pangle iOS SDK
 
-* [About iOS 14](#start/ios14)
-* [Prerequisites](#start/env)
-* [Integrate](#start/integrate)
-* [Initializing the SDK](#start/init)
-* [Native Ads](#start/native_ad)
-** [Origin Native Ads](#start/native_ad_origin)
-** [Template Native Ads](#start/native_ad_template)
-* [Displaying advertisements](#start/ad_display)
-* [Sending advertisements events](#start/ad_event)
+- [About iOS 14](#start/ios14)
+- [Prerequisites](#start/env)
+- [Integrate](#start/integrate)
+- [Initializing the SDK](#start/init)
+- [Native Ads](#start/native_ad)
+-- [Origin Native Ads](#start/native_ad_origin)
+-- [Template Native Ads](#start/native_ad_template)
+- [Displaying advertisements](#start/ad_display)
+- [Sending advertisements events](#start/ad_event)
 
 This chapter will explain the procedure for displaying the advertisement in the application and measuring the effectiveness of the advertisement.
 
@@ -149,7 +149,7 @@ class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate 
 
 `BUNativeAdsManagerDelegate` indicates the result of ad's load.
 
-```:swift
+```swift
 extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
     func nativeAdsManagerSuccess(toLoad adsManager: BUNativeAdsManager, nativeAds nativeAdDataArray: [BUNativeAd]?) {
 
