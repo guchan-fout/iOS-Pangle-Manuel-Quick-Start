@@ -1,8 +1,4 @@
----
-title: Quick Start
-weight: 10
-pre: "<b>1. </b>"
----
+# Quick Start for Pangle iOS SDK
 
 * [About iOS 14](#start/ios14)
 * [Prerequisites](#start/env)
@@ -92,7 +88,7 @@ Initialize Pangle with the APP ID as the argument. Unless there is a particular 
 
 **UIApplicationDelegate application(_:didFinishLaunchingWithOptions:)**
 
-```:swift
+```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     // Coppa 0: adult, 1: child
@@ -123,7 +119,7 @@ After you created one ad, you will get a **placement ID** for ads loading.
 
 #### Loading Ads
 
-```:swift
+```swift
 class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate {
 
     var adManager: BUNativeAdsManager!
