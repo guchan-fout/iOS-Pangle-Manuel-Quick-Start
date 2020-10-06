@@ -1,16 +1,12 @@
-# Quick Start for Pangle iOS SDK
+# 1. Integrate and Initialize
+
+This chapter will explain the procedure for integrating and Initializing the Pangle SDK.
 
 * [About iOS 14](#start/ios14)
 * [Prerequisites](#start/env)
 * [Integrate](#start/integrate)
 * [Initializing the SDK](#start/init)
-* [Native Ads](#start/native_ad)
-  * [Origin Native Ads](#start/native_ad_origin)
-  * [Template Native Ads](#start/native_ad_template)
-* [Displaying advertisements](#start/ad_display)
-* [Sending advertisements events](#start/ad_event)
 
-This chapter will explain the procedure for displaying the advertisement in the application and measuring the effectiveness of the advertisement.
 
 <a name="start/ios14"></a>
 ## About iOS 14
@@ -20,8 +16,9 @@ Please follow [iOS 14 actions](https://www.pangleglobal.com/help/doc/5f4dc4271de
 <a name="start/env"></a>
 ## Prerequisites
 
-* Use Xcode 12.0 or later
-* Target iOS 9.0 or later
+* Use Pangle iOS SDK 3.2.5.1 or higher
+* Use Xcode 12.0 or higher
+* Target iOS 9.0 or higher
 * Create a Pangle account [here](https://www.pangleglobal.com/)(If you do not have one), and add your app and placements.
 
 
@@ -103,83 +100,3 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 :warning: **If you need to obtain consent from users in the European Economic Area (EEA) or users under age, please ensure you set `setCoppa:(NSUInteger)Coppa` or `setGDPR:(NSInteger)GDPR`**
-
-
-
-<a name="start/native_ad"></a>
-## Native Ads
-
-<a name="start/native_ad_origin"></a>
-### Origin Native Ads
-
-#### Creating an Origin Native Ad placement
-After you created one ad, you will get a **placement ID** for ads loading.
-
-<img src="native_origin.png" alt="drawing" width="200"/>
-
-#### Loading Ads
-
-```swift
-class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate {
-
-    var adManager: BUNativeAdsManager!
-
-    //placementID : the ID when you created a placement
-    //count: the counts you want to download,DO NOT set more than 3
-    func requestNativeAds(placementID:String, count:Int) {
-        let slot = BUAdSlot.init()
-        slot.id = placementID
-        slot.adType = BUAdSlotAdType.feed
-        slot.position = BUAdSlotPosition.feed
-        let size = BUSize.init()
-        size.width = 1280
-        size.height = 720
-        slot.imgSize = size
-        slot.isSupportDeepLink = true
-        adManager = BUNativeAdsManager.init(slot: slot)
-        adManager.delegate = self
-
-        adManager.loadAdData(withCount: count)
-    }
-
-    ...
-
-```
-#### Determining load events
-
-`BUNativeAdsManagerDelegate` indicates the result of ad's load.
-
-```swift
-extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
-    func nativeAdsManagerSuccess(toLoad adsManager: BUNativeAdsManager, nativeAds nativeAdDataArray: [BUNativeAd]?) {
-
-        nativeAdDataArray?.forEach { nativeAd in
-            //show each nativeAd
-        }
-    }
-
-    func nativeAdsManager(_ adsManager: BUNativeAdsManager, didFailWithError error: Error?) {
-        print("\(#function)  failed with error: \(String(describing: error?.localizedDescription))")
-    }
-}
-```
-
-
-<a name="start/native_ad_template"></a>
-### Template Native Ads
-
-#### Creating an Origin Native Ad placement
-
-
-#### Loading Ads
-#### Determining load events
-
-
-## Others
-
-`App ID` and `Placement ID` for advertisements
-
-| Argument | Usage |
-|:-------------|:------------|
-| App ID | the ID when create an app |
-| Placement ID | the ID when create an placement for an app |
