@@ -91,51 +91,67 @@ if the parameter`imageMode` in the `data` is **BUFeedVideoAdModeImage** or **BUF
 
 
 ```swift
-var nativeAdRelatedView = BUNativeAdRelatedView.init()
+class NativeAdCellTableViewCell: UITableViewCell {
 
-func setup(nativeAd: BUNativeAd) {
-    title.text = nativeAd.data?.adTitle
-    desc.text = nativeAd.data?.adDescription
-    actionBtn.setTitle(nativeAd.data?.buttonText, for: .normal)
-    nativeAd.delegate = self
-    nativeAdRelatedView.refreshData(nativeAd)
-    adLabel.text = nativeAdRelatedView.adLabel?.text
+    ...
 
-    if (nativeAd.data?.imageMode == BUFeedADMode.videoAdModeImage || nativeAd.data?.imageMode == BUFeedADMode.videoAdModePortrait) {
-        //This is a video ad
-        if let videoView = nativeAdRelatedView.videoAdView {
-            let videoFrame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
-            videoView.frame = videoFrame
-            addPangleLogo(parentView: videoView, nativeAdRelatedView: nativeAdRelatedView)
-            containerView.addSubview(videoView)
-        }
-    } else {
-        //This is an image ad
-        if let url = URL(string: nativeAd.data?.imageAry.first?.imageURL ?? "") {
-            if let data = try? Data(contentsOf: url) {
-                let image = UIImage(data: data)
-                let imageFrame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
-                let imageView = UIImageView.init(frame: imageFrame)
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = image
-                addPangleLogo(parentView: imageView, nativeAdRelatedView: nativeAdRelatedView)
-                containerView.addSubview(imageView)
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var adLabel: UILabel!
+    @IBOutlet weak var actionBtn: UIButton!
+
+
+    var nativeAdRelatedView = BUNativeAdRelatedView.init()
+
+    func setup(nativeAd: BUNativeAd) {
+        title.text = nativeAd.data?.adTitle
+        desc.text = nativeAd.data?.adDescription
+        actionBtn.setTitle(nativeAd.data?.buttonText, for: .normal)
+        nativeAd.delegate = self
+        nativeAdRelatedView.refreshData(nativeAd)
+        adLabel.text = nativeAdRelatedView.adLabel?.text
+
+        if (nativeAd.data?.imageMode == BUFeedADMode.videoAdModeImage || nativeAd.data?.imageMode == BUFeedADMode.videoAdModePortrait) {
+            //This is a video ad
+            if let videoView = nativeAdRelatedView.videoAdView {
+                let videoFrame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
+                videoView.frame = videoFrame
+                addPangleLogo(parentView: videoView, nativeAdRelatedView: nativeAdRelatedView)
+                containerView.addSubview(videoView)
+            }
+        } else {
+            //This is an image ad
+            if let url = URL(string: nativeAd.data?.imageAry.first?.imageURL ?? "") {
+                if let data = try? Data(contentsOf: url) {
+                    let image = UIImage(data: data)
+                    let imageFrame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
+                    let imageView = UIImageView.init(frame: imageFrame)
+                    imageView.contentMode = .scaleAspectFit
+                    imageView.image = image
+                    addPangleLogo(parentView: imageView, nativeAdRelatedView: nativeAdRelatedView)
+                    containerView.addSubview(imageView)
+                }
             }
         }
+
+
+        // register the button to be clickable
+        nativeAd.registerContainer(containerView, withClickableViews: [actionBtn])
     }
 
-    // register the button to be clickable    
-    nativeAd.registerContainer(containerView, withClickableViews: [actionBtn])
-}
-
-func addPangleLogo(parentView: UIView, nativeAdRelatedView: BUNativeAdRelatedView) {
-    //Pangle Logo
-    if let pangleLogoView = nativeAdRelatedView.logoImageView {
-        let logoSize:CGFloat = 15.0
-        pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: logoSize)
-        parentView.addSubview(pangleLogoView)
+    func addPangleLogo(parentView: UIView, nativeAdRelatedView: BUNativeAdRelatedView) {
+        //Pangle Logo
+        if let pangleLogoView = nativeAdRelatedView.logoImageView {
+            let logoSize:CGFloat = 15.0
+            pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: logoSize)
+            parentView.addSubview(pangleLogoView)
+        }
     }
 }
+
+...
 
 ```
 
