@@ -149,9 +149,12 @@ class NativeAdCellTableViewCell: UITableViewCell {
             parentView.addSubview(pangleLogoView)
         }
     }
+
+    ...
+
 }
 
-...
+
 
 ```
 
