@@ -25,12 +25,12 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 <a name="start/native_ad_origin_load"></a>
 ### Loading Ads
 
-Create an **Origin** ad in the app, you will get a **placement ID** for ad's loading.
+On Pangle platform, create an **Origin** ad in the app, you will get a **placement ID** for ad's loading.
 
 <img src="native_origin.png" alt="drawing" width="200"/>
 
 
-Create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
+In your application, create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
 
 ```swift
 class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate {
@@ -64,8 +64,8 @@ class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate 
 <a name="start/native_ad_origin_loadevent"></a>
 ### Determining load events
 
-`BUNativeAdsManagerDelegate` indicates the result of ad's load.
-**Must set `rootViewController` of nativeAd for ad's displaying.**
+`BUNativeAdsManagerDelegate` indicates the result of ad's load. If ad is loaded,
+**must set `rootViewController` of nativeAd for ad's displaying.**
 
 ```swift
 extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
@@ -167,11 +167,11 @@ class NativeAdCellTableViewCell: UITableViewCell {
 <a name="start/native_ad_template"></a>
 ## Loading Ads
 
-Create an **Template** ad in the app, you will get a **placement ID** for ad's loading.
+On Pangle platform, create an **Template** ad in the app, you will get a **placement ID** for ad's loading.
 
 <img src="native_template.png" alt="drawing" width="200"/>
 
-Create a `slot` for setting size and type for the ad and use `BUNativeExpressAdManager`'s
+In your application, create a `slot` for setting size and type for the ad and use `BUNativeExpressAdManager`'s
 `- (instancetype)initWithSlot:(BUAdSlot * _Nullable)slot adSize:(CGSize)size;`
 Set the size for the ad's view in function. SDK will return an same size's ad.
 
@@ -200,9 +200,55 @@ func requestTemplateNativeAds(placementID:String, count:Int) {
 ```
 
 
-
 <a name="start/native_ad_template_loadevent"></a>
 ## Determining load events
 
+`BUNativeExpressAdViewDelegate` indicates the result of ad's load. If ad is loaded,
+**must call `render()` for rending the ad.**
+
+```swift
+// MARK:  BUNativeExpressAdViewDelegate
+extension YourNativeAdsViewController: BUNativeExpressAdViewDelegate {
+    func nativeExpressAdSuccess(toLoad nativeExpressAd: BUNativeExpressAdManager, views: [BUNativeExpressAdView]) {
+        for templateAdView in views {
+            // set rootViewController for ad's showing
+            templateAdView.rootViewController = self
+            templateAdView.render()
+        }
+    }
+
+    func nativeExpressAdFail(toLoad nativeExpressAd: BUNativeExpressAdManager, error: Error?) {
+        print("\(#function)  load template failed with error: \(String(describing: error?.localizedDescription))")
+    }
+}
+```
+
 <a name="start/native_ad_template_display"></a>
 ## Displaying Ads
+
+If `render()` succeed, ad will be sent to `BUNativeExpressAdViewDelegate`'s `- (void)nativeExpressAdViewRenderSuccess:(BUNativeExpressAdView *)nativeExpressAdView;`.
+
+**Please set `rootViewController` for enabling ad's action.**
+
+If user clicked close button and choose the reason, `func nativeExpressAdView(_ nativeExpressAdView: BUNativeExpressAdView, dislikeWithReason filterWords: [BUDislikeWords])` will be called.
+
+
+```swift
+// MARK:  BUNativeExpressAdViewDelegate
+extension YourNativeAdsViewController: BUNativeExpressAdViewDelegate {
+    func nativeExpressAdViewRenderSuccess(_ nativeExpressAdView: BUNativeExpressAdView) {
+        // here to add nativeExpressAdView for displaying
+        contents.insert(nativeExpressAdView, at: adPosition)
+        nativeExpressAdView.rootViewController = self
+        self.tableView.reloadData()
+    }
+
+    func nativeExpressAdViewRenderFail(_ nativeExpressAdView: BUNativeExpressAdView, error: Error?) {
+        print("\(#function)  render failed with error: \(String(describing: error?.localizedDescription))")
+    }
+
+    func nativeExpressAdView(_ nativeExpressAdView: BUNativeExpressAdView, dislikeWithReason filterWords: [BUDislikeWords]) {
+    // do the action (e.g. remove the ad) if ad's dislike reason is been clicked
+    }
+}
+```
