@@ -27,7 +27,7 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 
 On Pangle platform, create an **Origin** ad in the app, you will get a **placement ID** for ad's loading.
 
-<img src="native_origin.png" alt="drawing" width="200"/>
+<img src="pics/native_origin.png" alt="drawing" width="200"/>
 
 
 In your application, create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
@@ -154,9 +154,6 @@ class NativeAdCellTableViewCell: UITableViewCell {
     ...
 
 }
-
-
-
 ```
 
 
@@ -169,7 +166,7 @@ class NativeAdCellTableViewCell: UITableViewCell {
 
 On Pangle platform, create an **Template** ad in the app, you will get a **placement ID** for ad's loading.
 
-<img src="native_template.png" alt="drawing" width="200"/>
+<img src="pics/native_template.png" alt="drawing" width="200"/>
 
 In your application, create a `slot` for setting size and type for the ad and use `BUNativeExpressAdManager`'s
 `- (instancetype)initWithSlot:(BUAdSlot * _Nullable)slot adSize:(CGSize)size;`
