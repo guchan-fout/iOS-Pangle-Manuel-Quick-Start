@@ -58,6 +58,31 @@
             </objects>
             <point key="canvasLocation" x="621.73913043478262" y="701.78571428571422"/>
         </scene>
+        <!--Rewarded Video View Controller-->
+        <scene sceneID="zqX-ep-Ywa">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="pd8-Ji-zlf" customClass="RewardedVideoViewController" customModule="PangleQuickStartDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lzz-h0-xMI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-vP-wDA">
+                                <rect key="frame" x="26" y="44" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="clickBack:" destination="pd8-Ji-zlf" eventType="touchUpInside" id="pLk-lz-yzZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wl9-yd-ugU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sri-I3-jmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342.0289855072465" y="504.91071428571428"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -71,6 +96,7 @@
                     <connections>
                         <segue destination="4RU-ak-P3z" kind="presentation" identifier="moveToNativeSample" id="8oe-dO-qTf"/>
                         <segue destination="6mK-7k-jaV" kind="presentation" identifier="moveToTemplateNativeSample" id="cgv-7B-ulg"/>
+                        <segue destination="pd8-Ji-zlf" kind="presentation" identifier="moveToRewardedVideo" id="2Ka-TN-Ddk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

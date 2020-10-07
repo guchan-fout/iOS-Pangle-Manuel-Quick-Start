@@ -32,7 +32,7 @@ On Pangle platform, create an **Origin** ad in the app, you will get a **placeme
 In your application, create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
 
 ```swift
-class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate {
+class YourNativeAdsViewController: UIViewController {
 
     var adManager: BUNativeAdsManager!
 

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         return tv
     }()
     
-    let adsTypeArray = ["Origin Native Ad", "Template Native Ad"]
+    let adsTypeArray = ["Origin Native Ad", "Template Native Ad", "Rewarded Video Ad"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +81,7 @@ extension ViewController: UITableViewDataSource {
              performSegue(withIdentifier: "moveToTemplateNativeSample", sender: self)
             break
         case 2:
-             performSegue(withIdentifier: "moveToIntersVideo", sender: self)
+             performSegue(withIdentifier: "moveToRewardedVideo", sender: self)
             break
         case 3:
             performSegue(withIdentifier: "moveToTemplateBanner", sender: self)
