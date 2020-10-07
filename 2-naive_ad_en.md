@@ -30,6 +30,7 @@ Create an **Origin** ad in the app, you will get a **placement ID** for ad's loa
 <img src="native_origin.png" alt="drawing" width="200"/>
 
 
+Create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
 
 ```swift
 class YourNativeAdsViewController: UIViewController, BUNativeAdsManagerDelegate {
@@ -163,12 +164,42 @@ class NativeAdCellTableViewCell: UITableViewCell {
 <a name="start/native_ad_template"></a>
 ## Template Native Ads
 
+<a name="start/native_ad_template"></a>
+## Loading Ads
+
 Create an **Template** ad in the app, you will get a **placement ID** for ad's loading.
 
 <img src="native_template.png" alt="drawing" width="200"/>
 
-<a name="start/native_ad_template"></a>
-## Loading Ads
+Create a `slot` for setting size and type for the ad and use `BUNativeExpressAdManager`'s
+`- (instancetype)initWithSlot:(BUAdSlot * _Nullable)slot adSize:(CGSize)size;`
+Set the size for the ad's view in function. SDK will return an same size's ad.
+
+```swift
+/**
+ for template native ad
+ */
+var templateAdManager: BUNativeExpressAdManager!
+
+//placementID : the ID when you created a placement
+//count: the counts you want to download,DO NOT set more than 3
+func requestTemplateNativeAds(placementID:String, count:Int) {
+    let slot = BUAdSlot.init()
+    slot.id = placementID
+    slot.adType = BUAdSlotAdType.feed
+    slot.position = BUAdSlotPosition.feed
+    slot.imgSize = BUSize.init()
+    slot.isSupportDeepLink = true
+    // Please set your ad view's size here
+    let adViewWidth = 300
+    let adViewHeight = 250
+    templateAdManager = BUNativeExpressAdManager.init(slot: slot, adSize: CGSize(width: adViewWidth, height: adViewHeight))
+    templateAdManager.delegate = self
+    templateAdManager.loadAd(count)
+}
+```
+
+
 
 <a name="start/native_ad_template_loadevent"></a>
 ## Determining load events
