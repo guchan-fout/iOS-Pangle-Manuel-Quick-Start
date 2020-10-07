@@ -10,7 +10,6 @@
   * [Determining load events](#start/native_ad_template_loadevent)
   * [Displaying Ads](#start/native_ad_template_display)
 
-* [Sending advertisements events](#start/ad_event)
 
 This chapter will explain the procedure for displaying the native ads in the application and measuring the effectiveness of the advertisement.
 
