@@ -14,7 +14,7 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 <a name="start/reward_ad"></a>
 ## Rewarded Video Ads
 
-<a name="start/native_ad_origin_load"></a>
+<a name="start/reward_ad_load"></a>
 ### Loading Ads
 
 On Pangle platform, create an **Rewarded Video Ads** ad in the app, you will get a **placement ID** for ad's loading.
