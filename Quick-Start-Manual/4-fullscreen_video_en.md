@@ -14,7 +14,7 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 <a name="start/fullscreen_ad"></a>
 ## Full Screen Video Ads
 
-<a name="start/fullscreen_ad_load"></a>
+<a name="start/fullscreen_load"></a>
 ### Full Screen Ads
 
 On Pangle platform, create an **Interstitial Video Ads** ad in the app, you will get a **placement ID** for ad's loading.
