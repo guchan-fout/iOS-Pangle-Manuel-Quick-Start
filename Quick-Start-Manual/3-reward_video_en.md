@@ -6,7 +6,7 @@
   * [Determining load events](#start/reward_ad_loadevent)
 
 
-This chapter will explain the procedure for displaying the rewarded video ads in the application and measuring the effectiveness of the advertisement.
+This chapter will explain the procedure for displaying the rewarded video ads in the application.
 
 Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 
@@ -19,12 +19,13 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 
 On Pangle platform, create an **Rewarded Video Ads** ad in the app, you will get a **placement ID** for ad's loading.
 
-Please set the ad's `Orientation` to fit the app.
+Please set the ad's `Orientation` to fit for the app.
 `rewards name` and `rewards quantity` can be random if not needed.
 
 
+<img src="pics/reward_video_add.png" alt="drawing" width="300"/>  <br>
 
-<img src="pics/reward_video_set.png" alt="drawing" width="200"/>
+<img src="pics/reward_video_set.png" alt="drawing" width="300"/>
 
 
 In your application, create a `BURewardedVideoModel` for setting userId and use `BURewardedVideoAd` to load ads.

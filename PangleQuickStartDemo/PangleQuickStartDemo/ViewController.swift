@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         return tv
     }()
     
-    let adsTypeArray = ["Origin Native Ad", "Template Native Ad", "Rewarded Video Ad"]
+    let adsTypeArray = ["Origin Native Ad", "Template Native Ad", "Rewarded Video Ad", "Full Screen Video"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,18 +84,10 @@ extension ViewController: UITableViewDataSource {
              performSegue(withIdentifier: "moveToRewardedVideo", sender: self)
             break
         case 3:
-            performSegue(withIdentifier: "moveToTemplateBanner", sender: self)
-                break
-        case 4:
-            performSegue(withIdentifier: "moveToTemplateFeedAsBanner", sender: self)
-                break
-        case 5:
-            performSegue(withIdentifier: "moveToNativeSample", sender: self)
+            performSegue(withIdentifier: "moveToFullScreenVideo", sender: self)
                 break
         default: break
-            
         }
-        
     }
 }
 

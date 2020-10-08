@@ -11,7 +11,7 @@
   * [Displaying Ads](#start/native_ad_template_display)
 
 
-This chapter will explain the procedure for displaying the native ads in the application and measuring the effectiveness of the advertisement.
+This chapter will explain the procedure for displaying the native ads in the application.
 
 Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 

@@ -25,7 +25,6 @@ class RewardedVideoViewController: UIViewController {
     
     //placementID : the ID when you created a placement
     func requestRewardedVideoAd(placementID: String) {
-        print("aasdfasef")
         let rewardModel = BURewardedVideoModel.init()
         rewardModel.userId = "Your app's user id"
         
@@ -51,6 +50,6 @@ extension RewardedVideoViewController: BURewardedVideoAdDelegate {
     }
     
     func rewardedVideoAd(_ rewardedVideoAd: BURewardedVideoAd, didFailWithError error: Error?) {
-        print("\(#function)")
+        print("\(#function) failed with \(String(describing: error?.localizedDescription))")
     }
 }
