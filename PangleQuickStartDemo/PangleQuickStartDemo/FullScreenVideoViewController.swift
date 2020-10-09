@@ -17,7 +17,7 @@ class FullScreenVideoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        requestFullScreenVideoAd(placementID: "945531897")
+        requestFullScreenVideoAd(placementID: "945533978")
     }
     
     var fullscreenVideoAd: BUFullscreenVideoAd!

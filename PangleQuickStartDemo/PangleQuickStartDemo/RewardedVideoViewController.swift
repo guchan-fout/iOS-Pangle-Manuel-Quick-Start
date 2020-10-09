@@ -18,7 +18,7 @@ class RewardedVideoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        requestRewardedVideoAd(placementID: "945530779")
+        requestRewardedVideoAd(placementID: "945533980")
     }
     
     var rewardedVideo: BURewardedVideoAd!
