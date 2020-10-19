@@ -64,7 +64,8 @@ class YourNativeAdsViewController: UIViewController {
 ### Determining load events
 
 `BUNativeAdsManagerDelegate` indicates the result of ad's load. If ad is loaded,
-**must set `rootViewController` of nativeAd for ad's displaying.**
+**must set `rootViewController` of nativeAd for ad's displaying.
+Please make sure the rootViewController does not present other View Controller otherwise present ad will fail because prestentedViewController already exists.**
 
 ```swift
 extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
