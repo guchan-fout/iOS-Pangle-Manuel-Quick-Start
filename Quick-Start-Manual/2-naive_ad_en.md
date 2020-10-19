@@ -90,6 +90,8 @@ extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
 
 if the parameter`imageMode` in the `data` is **BUFeedVideoAdModeImage** or **BUFeedADModeSquareVideo**, please init a `BUNativeAdRelatedView` and call `- (void)refreshData:(BUNativeAd *)nativeAd;` to get videoAdView parts for the ad.
 
+Please add `BUNativeAdRelatedView`'s `logoImageView` on ad's view, this view will show the privacy information when been clicked.
+
 
 ```swift
 class NativeAdCellTableViewCell: UITableViewCell {
