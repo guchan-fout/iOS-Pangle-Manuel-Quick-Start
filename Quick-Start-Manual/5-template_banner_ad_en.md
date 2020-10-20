@@ -50,7 +50,7 @@ class TemplateBannerAdsViewController: UIViewController {
 
 ```
 
-<a name="start/native_ad_origin_loadevent"></a>
+<a name="start/template_banner_ad_loadevent"></a>
 ### Determining load events and Displaying
 
 `BUNativeExpressBannerViewDelegate` indicates the result of ad's load. If ad is rendered,
