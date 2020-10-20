@@ -38,6 +38,6 @@ extension FullScreenVideoViewController: BUFullscreenVideoAdDelegate{
     }
     
     func fullscreenVideoAd(_ fullscreenVideoAd: BUFullscreenVideoAd, didFailWithError error: Error?) {
-        print("\(#function) failed wiht \(String(describing: error?.localizedDescription))")
+        print("\(#function) failed with \(String(describing: error?.localizedDescription))")
     }
 }

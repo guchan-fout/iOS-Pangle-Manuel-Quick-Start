@@ -24,6 +24,7 @@
 		2CD26276252DADD300115243 /* TemplateNativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD26275252DADD300115243 /* TemplateNativeViewController.swift */; };
 		2CD2627E252DC99500115243 /* RewardedVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD2627D252DC99500115243 /* RewardedVideoViewController.swift */; };
 		2CD26286252EB48200115243 /* FullScreenVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD26285252EB48200115243 /* FullScreenVideoViewController.swift */; };
+		2CD26291253EC3F400115243 /* TemplateBannerAdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD26290253EC3F400115243 /* TemplateBannerAdsViewController.swift */; };
 		60EE89FC5BAF61FA900DD956 /* Pods_PangleQuickStartDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BA390502C07E5912D8FADB /* Pods_PangleQuickStartDemoTests.framework */; };
 		7CC9C3CEC7E798C14BCFCD3F /* Pods_PangleQuickStartDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F704DC9C20649C4C4F6AF7 /* Pods_PangleQuickStartDemo.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		2CD26275252DADD300115243 /* TemplateNativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateNativeViewController.swift; sourceTree = "<group>"; };
 		2CD2627D252DC99500115243 /* RewardedVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedVideoViewController.swift; sourceTree = "<group>"; };
 		2CD26285252EB48200115243 /* FullScreenVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVideoViewController.swift; sourceTree = "<group>"; };
+		2CD26290253EC3F400115243 /* TemplateBannerAdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateBannerAdsViewController.swift; sourceTree = "<group>"; };
 		328F6255AA555E130CAE8BD7 /* Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B82C3C914D60821E1B0F742 /* Pods-PangleQuickStartDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangleQuickStartDemo.debug.xcconfig"; path = "Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		55F704DC9C20649C4C4F6AF7 /* Pods_PangleQuickStartDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangleQuickStartDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				2CD26275252DADD300115243 /* TemplateNativeViewController.swift */,
 				2CD2627D252DC99500115243 /* RewardedVideoViewController.swift */,
 				2CD26285252EB48200115243 /* FullScreenVideoViewController.swift */,
+				2CD26290253EC3F400115243 /* TemplateBannerAdsViewController.swift */,
 				2CD2620A252DA4AD00115243 /* Main.storyboard */,
 				2CD2620D252DA4B000115243 /* Assets.xcassets */,
 				2CD2620F252DA4B000115243 /* LaunchScreen.storyboard */,
@@ -447,6 +450,7 @@
 				2CD26209252DA4AD00115243 /* ViewController.swift in Sources */,
 				2CD2624C252DA64300115243 /* TemplateNativeAdCell.swift in Sources */,
 				2CD26205252DA4AD00115243 /* AppDelegate.swift in Sources */,
+				2CD26291253EC3F400115243 /* TemplateBannerAdsViewController.swift in Sources */,
 				2CD26207252DA4AD00115243 /* SceneDelegate.swift in Sources */,
 				2CD26249252DA64300115243 /* NativeAdCellTableViewCell.swift in Sources */,
 				2CD26238252DA5C300115243 /* NativeAdsViewController.swift in Sources */,
