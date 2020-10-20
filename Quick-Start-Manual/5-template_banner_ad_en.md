@@ -3,7 +3,7 @@
 
 * [Template Banner Ads](#start/template_banner_ad)
   * [Loading Ads](#start/template_banner_ad_load)
-  * [Determining load events and Displaying](#template_banner_ad_loadevent)
+  * [Determining load events and Displaying](#start/template_banner_ad_loadevent)
 
 This chapter will explain the procedure for displaying the template banner ad in the application.
 
