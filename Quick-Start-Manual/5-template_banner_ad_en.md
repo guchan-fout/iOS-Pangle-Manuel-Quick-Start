@@ -19,6 +19,7 @@ Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
 
 On Pangle platform, create an **Template Banner** ad in the app, you will get a **placement ID** for ad's loading.
 
+**Please select 600*500 at Ad placement size, for now we only opened this size's traffic.**
 
 <img src="pics/template_banner_add.png" alt="drawing" width="200"/>
 
@@ -26,6 +27,7 @@ On Pangle platform, create an **Template Banner** ad in the app, you will get a 
 
 
 In your application, create a `BUNativeExpressBannerView` for setting size and load ads.
+**For now pangle only support size 300*250. Please set this size.**
 
 ```swift
 class TemplateBannerAdsViewController: UIViewController {
