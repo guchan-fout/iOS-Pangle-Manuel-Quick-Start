@@ -60,7 +60,6 @@ extension TemplateBannerAdsViewController: BUNativeExpressBannerViewDelegate{
     }
     
     func addBannerViewToView(_ bannerView: UIView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
         let x = (view.frame.width - bannerSize.width)/2
         let y = view.frame.height - bannerSize.height
         bannerView.frame = CGRect.init(x: x, y: y, width: bannerSize.width, height: bannerSize.height)
