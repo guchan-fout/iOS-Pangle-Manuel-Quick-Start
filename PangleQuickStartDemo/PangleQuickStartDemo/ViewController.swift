@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         return tv
     }()
     
-    let adsTypeArray = ["Origin Native Ad", "Template Native Ad", "Rewarded Video Ad", "Full Screen Video", "Template Banner"]
+    let adsTypeArray = ["Origin Native Ad", "Template Native Ad", "Rewarded Video Ad", "Full Screen Video", "Template Banner","Set GDPR"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +88,9 @@ extension ViewController: UITableViewDataSource {
             break
         case 4:
             performSegue(withIdentifier: "moveToTemplateBanner", sender: self)
+            break
+        case 5:
+            BUAdSDKManager.openGDPRPrivacy(fromRootViewController: self) { (isAgreed) in BUAdSDKManager.setGDPR(isAgreed ?0:1)}
             break
         default: break
         }

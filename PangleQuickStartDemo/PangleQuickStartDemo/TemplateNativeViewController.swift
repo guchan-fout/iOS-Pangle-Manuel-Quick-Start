@@ -66,13 +66,12 @@ class TemplateNativeViewController: UIViewController {
         slot.adType = BUAdSlotAdType.feed
         slot.position = BUAdSlotPosition.feed
         slot.imgSize = BUSize.init()
-        slot.isSupportDeepLink = true
         // Please set your ad view's size here
         let adViewWidth = 300
         let adViewHeight = 250
         templateAdManager = BUNativeExpressAdManager.init(slot: slot, adSize: CGSize(width: adViewWidth, height: adViewHeight))
         templateAdManager.delegate = self
-        templateAdManager.loadAd(count)
+        templateAdManager.loadAdData(withCount: count)
     }
     
 }

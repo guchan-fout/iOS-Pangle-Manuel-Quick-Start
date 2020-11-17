@@ -216,7 +216,7 @@
 				2CD261FD252DA4AD00115243 /* Sources */,
 				2CD261FE252DA4AD00115243 /* Frameworks */,
 				2CD261FF252DA4AD00115243 /* Resources */,
-				8422681AAE39107803EC0143 /* [CP] Copy Pods Resources */,
+				D7419CE54BD0D952466CBDE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,7 +254,7 @@
 				2CD2621E252DA4B000115243 /* Sources */,
 				2CD2621F252DA4B000115243 /* Frameworks */,
 				2CD26220252DA4B000115243 /* Resources */,
-				E3A0CCAB54DCDA6E910A89F7 /* [CP] Copy Pods Resources */,
+				9F6E14A122B4890D0FC409FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -360,21 +360,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8422681AAE39107803EC0143 /* [CP] Copy Pods Resources */ = {
+		9F6E14A122B4890D0FC409FC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AA578CDA8C91B2035F6CE1CC /* [CP] Check Pods Manifest.lock */ = {
@@ -399,21 +399,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E3A0CCAB54DCDA6E910A89F7 /* [CP] Copy Pods Resources */ = {
+		D7419CE54BD0D952466CBDE2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests/Pods-PangleQuickStartDemo-PangleQuickStartDemoUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PangleQuickStartDemo/Pods-PangleQuickStartDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EBB3D69ACBAE82A4310E0F21 /* [CP] Check Pods Manifest.lock */ = {
@@ -560,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -615,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -634,6 +634,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RCYD83376;
 				INFOPLIST_FILE = PangleQuickStartDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,6 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RCYD83376;
 				INFOPLIST_FILE = PangleQuickStartDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

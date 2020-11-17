@@ -66,7 +66,6 @@ class NativeAdsViewController: UIViewController {
         //size.width = 1280
         //size.height = 720
         slot.imgSize = size
-        slot.isSupportDeepLink = true
         adManager = BUNativeAdsManager.init(slot: slot)
         adManager.delegate = self
         
