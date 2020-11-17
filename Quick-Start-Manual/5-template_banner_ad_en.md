@@ -48,7 +48,7 @@ class TemplateBannerAdsViewController: UIViewController {
     }
 
     func requestTemplateBannerAd(placementID:String) {
-        nativeExpressBannerView = BUNativeExpressBannerView.init(slotID: placementID, rootViewController: self, adSize: bannerSize, isSupportDeepLink: true)
+        nativeExpressBannerView = BUNativeExpressBannerView.init(slotID: placementID, rootViewController: self, adSize: bannerSize)
         nativeExpressBannerView.frame = CGRect.init(x: 0, y: 0, width: bannerSize.width, height: bannerSize.height)
         nativeExpressBannerView.delegate = self
         nativeExpressBannerView.loadAdData()

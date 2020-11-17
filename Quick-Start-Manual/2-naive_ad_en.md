@@ -47,7 +47,6 @@ class YourNativeAdsViewController: UIViewController {
         size.width = 1280
         size.height = 720
         slot.imgSize = size
-        slot.isSupportDeepLink = true
         adManager = BUNativeAdsManager.init(slot: slot)
 
         // for BUNativeAdsManagerDelegate
@@ -90,7 +89,7 @@ extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
 
 if the parameter`imageMode` in the `data` is **BUFeedVideoAdModeImage** or **BUFeedADModeSquareVideo**, please init a `BUNativeAdRelatedView` and call `- (void)refreshData:(BUNativeAd *)nativeAd;` to get videoAdView parts for the ad.
 
-Please add `BUNativeAdRelatedView`'s `logoImageView` on ad's view, this view will show the privacy information when been clicked.
+Please add `BUNativeAdRelatedView`'s `logoADImageView` on ad's view, this view will show the privacy information when been clicked.
 
 
 ```swift
@@ -146,9 +145,9 @@ class NativeAdCellTableViewCell: UITableViewCell {
 
     func addPangleLogo(parentView: UIView, nativeAdRelatedView: BUNativeAdRelatedView) {
         //Pangle Logo, will show privacy information if clicked
-        if let pangleLogoView = nativeAdRelatedView.logoImageView {
-            let logoSize:CGFloat = 15.0
-            pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: logoSize)
+        if let pangleLogoView = nativeAdRelatedView.logoADImageView {
+            let logoSize:CGFloat = 35.0
+            pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: 20)
             parentView.addSubview(pangleLogoView)
         }
     }
