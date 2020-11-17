@@ -102,9 +102,9 @@ class NativeAdCellTableViewCell: UITableViewCell {
     
     func addPangleLogo(parentView: UIView, nativeAdRelatedView: BUNativeAdRelatedView) {
         //Pangle Logo, will show privacy information if clicked
-        if let pangleLogoView = nativeAdRelatedView.logoImageView {
-            let logoSize:CGFloat = 15.0
-            pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: logoSize)
+        if let pangleLogoView = nativeAdRelatedView.logoADImageView {
+            let logoSize:CGFloat = 35.0
+            pangleLogoView.frame = CGRect(x:(parentView.frame.width - logoSize) , y:(parentView.frame.height - logoSize), width: logoSize, height: 20)
             parentView.addSubview(pangleLogoView)
         }
     }
