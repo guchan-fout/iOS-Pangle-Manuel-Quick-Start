@@ -99,4 +99,10 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-:warning: **If you need to obtain consent from users in the European Economic Area (EEA) or users under age, please ensure you set `setCoppa:(NSUInteger)Coppa` or `setGDPR:(NSInteger)GDPR`**
+:warning: **If you need to obtain consent from users in the European Economic Area (EEA) or users under age, please ensure you set `setCoppa:(NSUInteger)Coppa` or `setGDPR:(NSInteger)GDPR`. Also we offer an API for user to choose. You can use this before setAppID to let the user to choose.**
+
+
+```swift
+/// Open GDPR Privacy for the user to choose before setAppID.
++ (void)openGDPRPrivacyFromRootViewController:(UIViewController *)rootViewController confirm:(BUConfirmGDPR)confirm;
+```
