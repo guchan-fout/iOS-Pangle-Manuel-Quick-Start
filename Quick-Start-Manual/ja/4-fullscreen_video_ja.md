@@ -1,34 +1,33 @@
-# 4. Full Screen Video Ads
+# 4. フルスクリーン動画広告
 
 
-* [Full Screen Video Ads](#start/fullscreen_ad)
-  * [Loading Ads](#start/fullscreen_load)
-  * [Determining load events](#start/fullscreen_loadevent)
+* [フルスクリーン動画広告](#start/fullscreen_ad)
+  * [フルスクリーン動画広告のロード](#start/fullscreen_load)
+  * [ロードイベントの受信と広告の表示](#start/fullscreen_loadevent)
 
 
-This chapter will explain the procedure for displaying the full screen video ads in the application.
+  この章では、アプリでフルスクリーン動画広告を表示する手順について説明します。
 
-Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
+  広告を利用するには、SDKを有効にする必要があります。詳細は[インストールと初期化](1-integrate_ja.md) をご確認ください。
 
 
 <a name="start/fullscreen_ad"></a>
-## Full Screen Video Ads
+## フルスクリーン動画広告
 
 <a name="start/fullscreen_load"></a>
-### Full Screen Ads
+### フルスクリーン動画広告のロード
 
-On Pangle platform, create an **Interstitial Video Ads** ad in the app, you will get a **placement ID** for ad's loading.
+Pangle管理画面上にて, 対象アプリに属する**Interstitial Video Ads** 広告を新規してください。 新規したらその広告枠の **placement ID** が生成されます。
 
-Please set the ad's `Orientation` to fit for the app.
-
-
-<img src="pics/fullscreen_add.png" alt="drawing" width="300"/>  <br>
-
-<img src="pics/fullscreen_set.png" alt="drawing" width="300"/>
+新規する際にアプリに合わせた`Orientation` を設定してください。
 
 
-In your application, create a `BUFullscreenVideoAd` to load ads.
+<img src="../pics/fullscreen_add.png" alt="drawing" width="300"/>  <br>
 
+<img src="../pics/fullscreen_set.png" alt="drawing" width="300"/>
+
+
+アプリ内に`BUFullscreenVideoAd`を新規して広告をロードすることが可能です。
 
 ```swift
 class FullScreenVideoViewController: UIViewController {
@@ -56,22 +55,20 @@ class FullScreenVideoViewController: UIViewController {
 ```
 
 <a name="start/fullscreen_loadevent"></a>
-### Determining load events and displaying
+### ロードイベントの受信と広告の表示
 
-`BUFullscreenVideoAdDelegate` indicates the result of ad's load. If ad is loaded and `isAdValid`, call `- (BOOL)showAdFromRootViewController:(UIViewController *)rootViewController;` to display the ad.
+`BUFullscreenVideoAdDelegate` はリワード広告のロードイベントが発生すると呼び出されます。 `- (BOOL)showAdFromRootViewController:(UIViewController *)rootViewController;` を呼ぶことで広告を表示できます。
 
 ```swift
-// MARK: BUFullscreenVideoAdDelegate
 extension FullScreenVideoViewController: BUFullscreenVideoAdDelegate{
 
-    func fullscreenVideoMaterialMetaAdDidLoad(_ fullscreenVideoAd: BUFullscreenVideoAd) {
-        if (fullscreenVideoAd.isAdValid) {
-            fullscreenVideoAd.show(fromRootViewController: self)
-        }
+    func fullscreenVideoAdVideoDataDidLoad(_ fullscreenVideoAd: BUFullscreenVideoAd) {
+        fullscreenVideoAd.show(fromRootViewController: self)
     }
 
     func fullscreenVideoAd(_ fullscreenVideoAd: BUFullscreenVideoAd, didFailWithError error: Error?) {
-        print("\(#function) failed wiht \(String(describing: error?.localizedDescription))")
+        print("\(#function) failed with \(String(describing: error?.localizedDescription))")
     }
+
 }
 ```
