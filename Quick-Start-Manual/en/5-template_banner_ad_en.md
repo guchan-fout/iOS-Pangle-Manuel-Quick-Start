@@ -23,28 +23,38 @@ Please Use the following sdk for template banner
 <a name="start/template_banner_ad_load"></a>
 ### Loading Ads
 
-On Pangle platform, create an **Template Banner** ad in the app, you will get a **placement ID** for ad's loading.
+On Pangle platform, create an **Template Banner** ad in the app.
 
-**Please select 600*500 at Ad placement size, for now we only opened this size's traffic.**
+Plase set **Template** at [Native type].
 
-<../img src="pics/template_banner_add.png" alt="drawing" width="200"/>
+You will get a **placement ID** for ad's loading.
 
-<../img src="pics/template_banner_set.png" alt="drawing" width="200"/>
+<img src="../pics/template_banner_add.png" alt="drawing" width="200"/>
+
+**Please select [600 * 500]  for 300*250.**
+
+<img src="../pics/template_banner_set.png" alt="drawing" width="200"/>
+
+**Please select [640 * 100]  for 320*50.**
+
+<img src="../pics/template320_add.png" alt="drawing" width="200"/>
 
 
 In your application, create a `BUNativeExpressBannerView` for setting size and load ads.
-**For now pangle only support size 300*250. Please set this size.**
+**Please set this size to 300 * 250 or 300 * 250**
 
 ```swift
 class TemplateBannerAdsViewController: UIViewController {
 
     var nativeExpressBannerView: BUNativeExpressBannerView!
+
+    // set width to 320 and height to 50 for 320*50
     let bannerSize = CGSize.init(width: 300, height: 250)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        requestTemplateBannerAd(placementID: "945557230")
+        requestTemplateBannerAd(placementID: "your placement id")
     }
 
     func requestTemplateBannerAd(placementID:String) {
@@ -64,7 +74,7 @@ class TemplateBannerAdsViewController: UIViewController {
 `BUNativeExpressBannerViewDelegate` indicates the result of ad's load. If ad is rendered,
 a `BUNativeExpressBannerView` will be returned as a ad's view for displaying. Please add it to the place you want the ad to show.
 
-If user clicked close button and choose the reason, `func nativeExpressBannerAdView(_ bannerAdView: BUNativeExpressBannerView, dislikeWithReason filterwords: [BUDislikeWords]?)` will be called.
+If user clicked close button feedback dialog will be shown. After choose the reason, `func nativeExpressBannerAdView(_ bannerAdView: BUNativeExpressBannerView, dislikeWithReason filterwords: [BUDislikeWords]?)` will be called.
 
 
 ```swift

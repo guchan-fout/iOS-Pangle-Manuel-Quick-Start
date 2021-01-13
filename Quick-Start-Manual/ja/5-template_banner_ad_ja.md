@@ -54,7 +54,7 @@ class TemplateBannerAdsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        requestTemplateBannerAd(placementID: "945557230")
+        requestTemplateBannerAd(placementID: "your placement id")
     }
 
     func requestTemplateBannerAd(placementID:String) {
