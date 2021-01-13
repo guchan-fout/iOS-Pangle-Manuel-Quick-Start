@@ -1,35 +1,29 @@
-# 2. Native Ads
+# 2. ネイティブ広告
 
 
-* [Origin Native Ads](#start/native_ad_origin)
-  * [Loading Ads](#start/native_ad_origin_load)
-  * [Determining load events](#start/native_ad_origin_loadevent)
-  * [Displaying Ads](#start/native_ad_origin_display)
-* [Template Native Ads](#start/native_ad_template)
-  * [Loading Ads](#start/native_ad_template_load)
-  * [Determining load events](#start/native_ad_template_loadevent)
-  * [Displaying Ads](#start/native_ad_template_display)
+* [オリジンネイティブ広告](#start/native_ad_origin)
+  * [広告のロード](#start/native_ad_origin_load)
+  * [ロードイベントを受信する](#start/native_ad_origin_loadevent)
+  * [広告の表示とインプレッション登録](#start/native_ad_origin_display)
 
 
-This chapter will explain the procedure for displaying the native ads in the application.
+この章では、アプリでネイティブ広告を表示する手順について説明します。
 
-Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
-
+広告を利用するには、SDKを有効にする必要があります。詳細は[インストールと初期化](1-integrate_ja.md) をご確認ください。
 
 
 
 <a name="start/native_ad_origin"></a>
-## Origin Native Ads
+## オリジンネイティブ広告
 
 <a name="start/native_ad_origin_load"></a>
-### Loading Ads
+### 広告のロード
 
-On Pangle platform, create an **Origin** ad in the app, you will get a **placement ID** for ad's loading.
+Pangle管理画面上にて, 対象アプリに属する**Origin** 広告を新規してください。 新規したらその広告枠の **placement ID** が生成されます。
 
-<img src="pics/native_origin.png" alt="drawing" width="200"/>
+<img src="../pics/native_origin.png" alt="drawing" width="200"/>
 
-
-In your application, create a `slot` for setting size and type for the ad and  use `BUNativeAdsManager` to load ads.
+アプリに、リクエストする広告タイプを指定する`slot`を新規し、`BUNativeAdsManager`でロードしてください。
 
 ```swift
 class YourNativeAdsViewController: UIViewController {
@@ -44,8 +38,6 @@ class YourNativeAdsViewController: UIViewController {
         slot.adType = BUAdSlotAdType.feed
         slot.position = BUAdSlotPosition.feed
         let size = BUSize.init()
-        size.width = 1280
-        size.height = 720
         slot.imgSize = size
         adManager = BUNativeAdsManager.init(slot: slot)
 
@@ -60,11 +52,11 @@ class YourNativeAdsViewController: UIViewController {
 ```
 
 <a name="start/native_ad_origin_loadevent"></a>
-### Determining load events
+### ロードイベントを受信する
 
-`BUNativeAdsManagerDelegate` indicates the result of ad's load. If ad is loaded,
-**must set `rootViewController` of nativeAd for ad's displaying.
-Please make sure the rootViewController does not present other View Controller otherwise present ad will fail because prestentedViewController already exists.**
+`BUNativeAdsManagerDelegate` はロードイベントが発生すると呼び出されます。
+広告がロード成功した場合、広告の表示を失敗しないため、**必ずほかのView Controllerを表示していない`rootViewController` をセットしてください。そうしないと広告表示時に`prestentedViewController already exists`エラーになります。**
+
 
 ```swift
 extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
@@ -83,13 +75,15 @@ extension YourNativeAdsViewController: BUNativeAdsManagerDelegate {
 ```
 
 <a name="start/native_ad_origin_display"></a>
-### Displaying Ads
+### 広告の表示とインプレッション登録
+`nativeAd` にある `data` にて広告を表示するためのタイトル、概要、画像などが含まれています。
 
-`nativeAd`'s parameter `data` has parts like ad's title, description, images for displaying.
+もし`data`内のパラメーター`imageMode` が **BUFeedVideoAdModeImage**、 **BUFeedVideoAdModePortrait** または **BUFeedADModeSquareVideo**の場合、`BUNativeAdRelatedView`を利用して`- (void)refreshData:(BUNativeAd *)nativeAd;`　を呼ぶことで広告の動画素材 `videoAdView` を利用することができます。
 
-if the parameter`imageMode` in the `data` is **BUFeedVideoAdModeImage** or **BUFeedADModeSquareVideo**, please init a `BUNativeAdRelatedView` and call `- (void)refreshData:(BUNativeAd *)nativeAd;` to get videoAdView parts for the ad.
+`BUNativeAdRelatedView` の `logoADImageView` を広告画面内に追加してください。こちらのビューをクリックするとプライバシー情報が表示されます。
 
-Please add `BUNativeAdRelatedView`'s `logoADImageView` on ad's view, this view will show the privacy information when been clicked.
+**必ず**`BUNativeAd`の`(void)registerContainer:(__kindof UIView *)containerView withClickableViews:(NSArray<__kindof UIView *> *_Nullable)clickableViews;`で広告ビューのクリックエリアを登録してください。
+ボタンや画像などを設定することでユーザーが対象エリアをクリックしたらランディングページへのリダイレクト遷移すると対象広告のインプレッションをトリガーすることが可能です。
 
 
 ```swift
@@ -115,7 +109,8 @@ class NativeAdCellTableViewCell: UITableViewCell {
         nativeAdRelatedView.refreshData(nativeAd)
         adLabel.text = nativeAdRelatedView.adLabel?.text
 
-        if (nativeAd.data?.imageMode == BUFeedADMode.videoAdModeImage || nativeAd.data?.imageMode == BUFeedADMode.videoAdModePortrait) {
+        if (nativeAd.data?.imageMode == BUFeedADMode.videoAdModeImage || nativeAd.data?.imageMode == BUFeedADMode.videoAdModePortrait||
+        nativeAd.data?.imageMode == BUFeedADMode.adModeSquareVide) {
             //This is a video ad
             if let videoView = nativeAdRelatedView.videoAdView {
                 let videoFrame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height)
@@ -154,99 +149,5 @@ class NativeAdCellTableViewCell: UITableViewCell {
 
     ...
 
-}
-```
-
-
-
-<a name="start/native_ad_template"></a>
-## Template Native Ads
-
-<a name="start/native_ad_template"></a>
-## Loading Ads
-
-On Pangle platform, create an **Template** ad in the app, you will get a **placement ID** for ad's loading.
-
-<img src="pics/native_template.png" alt="drawing" width="200"/>
-
-In your application, create a `slot` for setting size and type for the ad and use `BUNativeExpressAdManager`'s
-`- (instancetype)initWithSlot:(BUAdSlot * _Nullable)slot adSize:(CGSize)size;`
-Set the size for the ad's view in function. SDK will return an same size's ad.
-
-```swift
-/**
- for template native ad
- */
-var templateAdManager: BUNativeExpressAdManager!
-
-//placementID : the ID when you created a placement
-//count: the counts you want to download,DO NOT set more than 3
-func requestTemplateNativeAds(placementID:String, count:Int) {
-    let slot = BUAdSlot.init()
-    slot.id = placementID
-    slot.adType = BUAdSlotAdType.feed
-    slot.position = BUAdSlotPosition.feed
-    slot.imgSize = BUSize.init()
-    slot.isSupportDeepLink = true
-    // Please set your ad view's size here
-    let adViewWidth = 300
-    let adViewHeight = 250
-    templateAdManager = BUNativeExpressAdManager.init(slot: slot, adSize: CGSize(width: adViewWidth, height: adViewHeight))
-    templateAdManager.delegate = self
-    templateAdManager.loadAd(count)
-}
-```
-
-
-<a name="start/native_ad_template_loadevent"></a>
-## Determining load events
-
-`BUNativeExpressAdViewDelegate` indicates the result of ad's load. If ad is loaded,
-**must call `render()` for rending the ad.**
-
-```swift
-// MARK:  BUNativeExpressAdViewDelegate
-extension YourNativeAdsViewController: BUNativeExpressAdViewDelegate {
-    func nativeExpressAdSuccess(toLoad nativeExpressAd: BUNativeExpressAdManager, views: [BUNativeExpressAdView]) {
-        for templateAdView in views {
-            // set rootViewController for ad's showing
-            templateAdView.rootViewController = self
-            templateAdView.render()
-        }
-    }
-
-    func nativeExpressAdFail(toLoad nativeExpressAd: BUNativeExpressAdManager, error: Error?) {
-        print("\(#function)  load template failed with error: \(String(describing: error?.localizedDescription))")
-    }
-}
-```
-
-<a name="start/native_ad_template_display"></a>
-## Displaying Ads
-
-If `render()` succeed, ad will be sent to `BUNativeExpressAdViewDelegate`'s `- (void)nativeExpressAdViewRenderSuccess:(BUNativeExpressAdView *)nativeExpressAdView;`.
-
-**Please set `rootViewController` for enabling ad's action.**
-
-If user clicked close button and choose the reason, `func nativeExpressAdView(_ nativeExpressAdView: BUNativeExpressAdView, dislikeWithReason filterWords: [BUDislikeWords])` will be called.
-
-
-```swift
-// MARK:  BUNativeExpressAdViewDelegate
-extension YourNativeAdsViewController: BUNativeExpressAdViewDelegate {
-    func nativeExpressAdViewRenderSuccess(_ nativeExpressAdView: BUNativeExpressAdView) {
-        // here to add nativeExpressAdView for displaying
-        contents.insert(nativeExpressAdView, at: adPosition)
-        nativeExpressAdView.rootViewController = self
-        self.tableView.reloadData()
-    }
-
-    func nativeExpressAdViewRenderFail(_ nativeExpressAdView: BUNativeExpressAdView, error: Error?) {
-        print("\(#function)  render failed with error: \(String(describing: error?.localizedDescription))")
-    }
-
-    func nativeExpressAdView(_ nativeExpressAdView: BUNativeExpressAdView, dislikeWithReason filterWords: [BUDislikeWords]) {
-    // do the action (e.g. remove the ad) if ad's dislike reason is been clicked
-    }
 }
 ```
