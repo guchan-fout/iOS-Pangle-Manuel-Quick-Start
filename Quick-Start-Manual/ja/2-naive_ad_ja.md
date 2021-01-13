@@ -23,7 +23,7 @@ Pangle管理画面上にて, 対象アプリに属する**Origin** 広告を新�
 
 <img src="../pics/native_origin.png" alt="drawing" width="200"/>
 
-アプリに、リクエストする広告タイプを指定する`slot`を新規し、`BUNativeAdsManager`でロードしてください。
+アプリに広告タイプを指定する`slot`を新規し、`BUNativeAdsManager`でロードしてください。
 
 ```swift
 class YourNativeAdsViewController: UIViewController {

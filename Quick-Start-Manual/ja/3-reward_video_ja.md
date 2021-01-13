@@ -1,35 +1,38 @@
-# 3. Rewarded Video Ads
+# 3. リワード動画広告
 
 
-* [Rewarded Video Ads](#start/reward_ad)
-  * [Loading Ads](#start/reward_ad_load)
-  * [Determining load events](#start/reward_ad_loadevent)
+* [リワード動画広告](#start/reward_ad)
+  * [リワード動画広告のロード](#start/reward_ad_load)
+  * [ロードイベントの受信と広告の表示](#start/reward_ad_loadevent)
 
 
-This chapter will explain the procedure for displaying the rewarded video ads in the application.
+この章では、アプリでリワード動画広告を表示する手順について説明します。
 
-Please [integrate Pangle SDK](1-integrate_en.md) before load ads.
+広告を利用するには、SDKを有効にする必要があります。詳細は[インストールと初期化](1-integrate_ja.md) をご確認ください。
+
 
 
 <a name="start/reward_ad"></a>
-## Rewarded Video Ads
+## リワード動画広告
 
 <a name="start/reward_ad_load"></a>
-### Loading Ads
+### リワード動画広告のロード
 
-On Pangle platform, create an **Rewarded Video Ads** ad in the app, you will get a **placement ID** for ad's loading.
+Pangle管理画面上にて, 対象アプリに属する**Rewarded Video Ads** 広告を新規してください。 新規したらその広告枠の **placement ID** が生成されます。
 
-Please set the ad's `Orientation` to fit for the app.
-`rewards name` and `rewards quantity` can be random if not needed.
+新規する際にアプリに合わせた`Orientation` を設定してください。
 
-
-<img src="pics/reward_video_add.png" alt="drawing" width="300"/>  <br>
-
-<img src="pics/reward_video_set.png" alt="drawing" width="300"/>
+必要ない場合、`rewards name` と `rewards quantity` をランダムにしてください。
 
 
-In your application, create a `BURewardedVideoModel` for setting userId and use `BURewardedVideoAd` to load ads.
-`userId` can be random if not needed.
+<img src="../pics/reward_video_add.png" alt="drawing" width="300"/>  <br>
+
+<img src="../pics/reward_video_set.png" alt="drawing" width="300"/>
+
+アプリ内に`BURewardedVideoModel`を新規してuserIdを設定後に`BURewardedVideoAd`で広告をロードすることが可能です。
+
+`userId` はランダムでも可能です。
+
 
 ```swift
 class YourRewardedVideoAdsViewController: UIViewController {
@@ -40,7 +43,6 @@ class YourRewardedVideoAdsViewController: UIViewController {
 
   //placementID : the ID when you created a placement
   func requestRewardedVideoAd(placementID: String) {
-      print("aasdfasef")
       let rewardModel = BURewardedVideoModel.init()
       rewardModel.userId = "Your app's user id"
 
@@ -54,24 +56,23 @@ class YourRewardedVideoAdsViewController: UIViewController {
 ```
 
 <a name="start/reward_ad_loadevent"></a>
-### Determining load events and displaying
+### ロードイベントの受信と広告の表示
 
-`BURewardedVideoAdDelegate` indicates the result of ad's load. If ad is loaded and `isAdValid`, call `- (BOOL)showAdFromRootViewController:(UIViewController *)rootViewController;` to display the ad.
+`BURewardedVideoAdDelegate` はリワード広告のロードイベントが発生すると呼び出されます。
+
+`- (BOOL)showAdFromRootViewController:(UIViewController *)rootViewController;`を呼ぶことでリワード広告を表示できます。
+
 
 ```swift
 // MARK: BURewardedVideoAdDelegate
 extension RewardedVideoViewController: BURewardedVideoAdDelegate {
     func rewardedVideoAdDidLoad(_ rewardedVideoAd: BURewardedVideoAd) {
         print("\(#function)")
-        if (rewardedVideoAd.isAdValid) {
-            rewardedVideoAd.show(fromRootViewController: self)
-        } else {
-            print("\(#function) rewardedVideoAd is unvalid ")
-        }
     }
 
     func rewardedVideoAdVideoDidLoad(_ rewardedVideoAd: BURewardedVideoAd) {
         print("\(#function)")
+        rewardedVideoAd.show(fromRootViewController: self)
     }
 
     func rewardedVideoAd(_ rewardedVideoAd: BURewardedVideoAd, didFailWithError error: Error?) {
